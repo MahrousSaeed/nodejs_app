@@ -1,0 +1,154 @@
+*{
+    box-sizing: border-box;
+    /* padding: 0;
+    margin: 0 */
+}
+body {
+    margin: 0;
+    padding: 0
+}
+
+header {
+    width: 100%;
+    background: #ffa502;
+    overflow: hidden;
+}
+
+header ul {
+    display: flex;
+    list-style: none;
+
+}
+
+header ul li a {
+    color: #000;
+    padding: 20px 30px;
+    text-decoration: none;
+    font-weight: bold
+}
+
+header ul li a:hover,
+header ul li a:active {
+    color: #3742fa
+}
+.active {
+    color: #3742fa
+}
+main:not(.shop_main) {
+    padding-left: 4rem
+}
+.shop_main{
+    padding: 13px
+}
+form {
+    padding-top: 2rem
+}
+form input {
+    border: 1px solid #ffa502;
+    padding: 10px;
+    border-radius: 3px;
+    width: 300px;
+    display: block;
+    margin: 1rem 0
+}
+button {
+    border: 1px solid #3742fa;
+    padding: 5px 10px;
+    font-weight: bold;
+    text-transform: capitalize;
+    border-radius: 3px;
+    color:  #3742fa;
+    background: transparent;
+   
+}
+button:hover {
+    background: black;
+    color: #ffa502;
+    border: 1px solid black
+}
+.grid{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap
+}
+.item {
+    width: 33.3%;
+    padding: 13px
+}
+.card {
+    border:1px solid #DDD;
+}
+.card .card_header .card_title , 
+.card_content h2 {
+    font-weight: bold;
+    text-align: center;
+    
+}
+.card .card_image{
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    margin-bottom: 13px
+}
+.card .card_image img{
+    width: 100%;
+}
+.card_content{
+    padding:  0 13px
+}
+.card_content p{
+    color: #555;
+    padding: 13px 0px;
+}
+
+.card_actions button,
+.card_actions_admin a,
+.card_actions a{
+    margin:13px  auto;
+    border: 1px solid #3742fa;
+    padding: 5px 10px;
+    font-weight: bold;
+    text-transform: capitalize;
+    border-radius: 3px;
+    color:  #3742fa;
+    display: block;
+    background: transparent;
+
+}
+
+.card_actions{
+    display:flex;
+    justify-content: center
+}
+.card_actions form{
+   padding-top: 0
+}
+.card_actions button,.card_actions a{
+    margin:13px  13px;
+}
+.card_actions a{
+    text-decoration: none
+}
+.cartBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cartBody ul {
+    list-style: none;
+    padding: 0;
+    width: 298px;
+    border: 1px solid #EEE;
+    border-bottom: none;
+}
+.cartBody ul li  {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 14px;
+    border-bottom: 1px solid #EEE;
+    display: flex;
+    justify-content: space-between;
+}
+.cartBody ul li button {
+    padding: 2px 6px;
+}

@@ -1,0 +1,44 @@
+<%- include('../includes/head.ejs')  %>
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main class="shop_main">
+        <% if(prods.length > 0) { %>
+        <div class="grid">
+            <% for(let product of prods) { %>
+            <div class="item">
+                <div class="card">
+                    <header class="card_header">
+                        <h1 class="card_title"><%= product.title %></h1>
+                    </header>
+                    <%if(product.imageUrl != ''){%>
+                    <div class="card_image">
+                        <img src="<%= product.imageUrl %>" alt="">
+                    </div>
+                    <%}else{%>
+                    <div class="card_image">
+                        <img src="http://www.bradleysbookoutlet.com/wp-content/uploads/2013/06/bradleys-book-outlet-books-only-logo.png>"
+                            alt="">
+                    </div>
+                    <%}%>
+                    <div class="card_content">
+                        <h2 class="product_price"><%= product.price %></h2>
+                    <p class="product_description" style="text-align: center"><%= product.description %> </p>
+                </div>
+                <div class="card_actions">
+                    <form action="/cart" method="POST">
+                        <button type="submit" class="btn">Add to Cart</button>
+                        <input type="hidden" name="productId" value="<%= product.id %>">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <% } %>
+        </div>
+        <%  } else { %>
+        <h1>no products</h1>
+        <%  }%>
+    </main>
+
+    <%- include('../includes/end.ejs') %>
