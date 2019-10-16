@@ -71,17 +71,17 @@ module.exports = class cart {
             console.log(data);
             let  cart_products =  data.products
             const product = new Product()
-            product.findById(id,product => {
-                const delete_Product = product
-                 cart_products = cart_products.filter(item => item.id !== id )
-                 const product_cart = cart_products.find(item => item.id === id )
-                // cart_products.splice(productIndex,1)
-                console.log('sddsd',cart_products);
-                data.products = cart_products
-                // data.totalPrice = data.totalPrice - product.price*product_cart.qty
-                console.log('data',data);
+            // product.findById(id,product => {
+            //     const delete_Product = product
+            //      cart_products = cart_products.filter(item => item.id !== id )
+            //      const product_cart = cart_products.find(item => item.id === id )
+            //     // cart_products.splice(productIndex,1)
+            //     console.log('sddsd',cart_products);
+            //     data.products = cart_products
+            //     // data.totalPrice = data.totalPrice - product.price*product_cart.qty
+            //     console.log('data',data);
                 
-            })
+            // })
             
         })
     }

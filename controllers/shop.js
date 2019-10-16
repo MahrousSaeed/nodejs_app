@@ -2,25 +2,62 @@ const Product = require('../models/product')
 const cartModel = require('../models/cart')
 exports.getProducts = (req,res,next) => {
    const product = new Product('sfsfsf')
-   const products = product.fetchAll((products) => {
-       res.render('shop/index',{ prods: products , docTitle:'Shop',path:'/'})
-   })    
+   Product.findAll().then(products => {
+    res.render('shop/index', { 
+        docTitle: 'Shop',
+        prods: products
+       })
+   })
+   .catch(err=> {
+       console.log(err);
+       
+   })
+//    let products = product.fetchAlll()
+//    .then((result) => {
+//       res.render('shop/index', { 
+//           docTitle: 'Shop',
+//           prods: result[0] 
+//          })
+//    })
+//    .catch((err)=> {
+//       console.log(err);
+      
+//    })
 }
 exports.getAllProducts = (req,res,next) => {
    const product = new Product('')
-   const products = product.fetchAll((products) => {
-       res.render('shop/product-list',{ prods: products , docTitle:'products list',path:'/'})
-   })    
+//    const products = product.fetchAll((products) => {
+//        res.render('shop/product-list',{ prods: products , docTitle:'products list',path:'/'})
+//    })    
+
+   Product.findAll().then(products => {
+    res.render('shop/product-list', { 
+        docTitle: 'products list',
+        prods: products
+       })
+   })
+   .catch(err=> {
+       console.log(err);
+       
+   })
 }
 exports.getOneProduct = (req,res,next) => {
     const prodId = req.params.id
     // console.log(prodId);
-    const product = new Product('')
-    const products = product.findById(prodId,product =>{
-        // console.log('product ',product)
-        res.render('shop/product-details',{ product: product , docTitle:'product details',path:'/'})  
-    })  
-    // res.redirect('/')
+    // const product = new Product('')
+ 
+    Product.findByPk(prodId)
+    .then((data) => {
+        // console.log(data[0][0]);
+        
+        res.render('shop/product-details',{ 
+            product:data, 
+            docTitle:'product details',
+            path:'/'
+        });
+        // res.redirect('/')
+    }) 
+    
 }
 
 exports.getCart = (req,res,next) =>{
@@ -62,11 +99,10 @@ exports.getCart = (req,res,next) =>{
 exports.postCart = (req,res,next) =>{
     const productId = req.body.productId
     const product = new Product('')
-    const productData = product.findById(productId,product => {
-        cartModel.addProduct(productId,product.price)
-        res.redirect('/cart')
-        // res.render('/shop/cart',{product:product,docTitle:'Cart'})
-    }) 
+    // const productData = product.findById(productId,product => {
+    //     cartModel.addProduct(productId,product.price)
+    //     res.redirect('/cart')
+    // }) 
 }
 exports.deleteItem = (req,res,next) =>{
     const productId = req.body.productId
@@ -82,9 +118,21 @@ exports.orders = (req,res,next) =>{
 }
 exports.index = (req,res,next) =>{
     const product = new Product('')
-    const products = product.fetchAll((products) => {
-        res.render('shop/index',{ prods: products , docTitle:'index',path:'/'})
-    })  
+    // const products = product.fetchAll((products) => {
+    //     res.render('shop/index',{ prods: products , docTitle:'index',path:'/'})
+    // })  
+
+    Product.findAll().then(products => {
+        res.render('shop/index', { 
+            docTitle: 'index',
+            prods: products
+           })
+       })
+       .catch(err=> {
+           console.log(err);
+           
+       })
+    
 }
 
 exports.checkout = (req,res,next) =>{
